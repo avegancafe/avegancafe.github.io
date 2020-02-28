@@ -1,6 +1,6 @@
 ---
 title: Inspiration
-date: "2020-02-28"
+date: 2019-08-14
 description: "What motivates you?"
 ---
 
