@@ -1,7 +1,7 @@
 ---
 title: Inspiration
 date: 2019-08-14
-description: "What motivates you?"
+description: "What motivates me, for now"
 ---
 
 Inspiration is what gets you up in the morning. It’s that feeling where you
