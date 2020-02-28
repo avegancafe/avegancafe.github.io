@@ -4,7 +4,7 @@ date: "2019-10-10"
 description: "A summary of my thoughts on barriers to entry of technologies"
 ---
 
-![path drawing](./beach.jpg)
+![path drawing](./buildPath.jpg)
 Disclaimer: This is entirely my opinion; there are many ways to slice it, this is just my favorite!
 
 A couple of weeks ago I was starting up a new project and needed a file server
