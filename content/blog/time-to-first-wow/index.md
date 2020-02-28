@@ -5,7 +5,10 @@ description: "A summary of my thoughts on barriers to entry of technologies"
 ---
 
 ![path drawing](./buildPath.jpg)
+
+<span class="subtext image-description">
 Disclaimer: This is entirely my opinion; there are many ways to slice it, this is just my favorite!
+</span>
 
 A couple of weeks ago I was starting up a new project and needed a file server
 to serve some static assets. I didn’t need anything fancy, really just to serve
