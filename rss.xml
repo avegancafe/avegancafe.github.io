@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled]]></title><description><![CDATA[A documentation of my thoughts and learnings as a software engineer.]]></description><link>https://keyboard-clacker.github.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 29 Feb 2020 08:52:05 GMT</lastBuildDate><item><title><![CDATA[Time to First Wow]]></title><description><![CDATA[A couple of weeks ago I was starting up a new project and needed a file server
+to serve some static assets. I didn’t need anything fancy…]]></description><link>https://keyboard-clacker.github.io/time-to-first-wow/</link><guid isPermaLink="false">https://keyboard-clacker.github.io/time-to-first-wow/</guid><pubDate>Thu, 10 Oct 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 900px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/92a127422b6c733e1f6de1bb3c3404a8/8e1fc/buildPath.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.66666666666666%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAGAAAAgMAAAAAAAAAAAAAAAAAAAQBAgX/xAAUAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAHdi64sAJ//xAAaEAACAgMAAAAAAAAAAAAAAAAAAQMQESEi/9oACAEBAAEFAnk3ci6P/8QAFREBAQAAAAAAAAAAAAAAAAAAARD/2gAIAQMBAT8BJ//EABQRAQAAAAAAAAAAAAAAAAAAABD/2gAIAQIBAT8BP//EABYQAAMAAAAAAAAAAAAAAAAAAAIQIP/aAAgBAQAGPwKBX//EABkQAAMBAQEAAAAAAAAAAAAAAAABESExUf/aAAgBAQABPyHwOhcIqaNa2QWI/9oADAMBAAIAAwAAABDLz//EABYRAQEBAAAAAAAAAAAAAAAAAAEREP/aAAgBAwEBPxAVmf/EABYRAQEBAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBYXP/EABoQAQEBAQEBAQAAAAAAAAAAAAERACFRMZH/2gAIAQEAAT8QQaCH675N557koUjOzWpCu5wjYcuAAEDgb//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;path drawing&quot;
+        title=&quot;path drawing&quot;
+        src=&quot;/static/92a127422b6c733e1f6de1bb3c3404a8/8e1fc/buildPath.jpg&quot;
+        srcset=&quot;/static/92a127422b6c733e1f6de1bb3c3404a8/158ba/buildPath.jpg 360w,
+/static/92a127422b6c733e1f6de1bb3c3404a8/80e3c/buildPath.jpg 720w,
+/static/92a127422b6c733e1f6de1bb3c3404a8/8e1fc/buildPath.jpg 900w&quot;
+        sizes=&quot;(max-width: 900px) 100vw, 900px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;span class=&quot;subtext image-description&quot;&gt;
+Disclaimer: This is entirely my opinion; there are many ways to slice it, this is just my favorite!
+&lt;/span&gt;
+&lt;p&gt;A couple of weeks ago I was starting up a new project and needed a file server
+to serve some static assets. I didn’t need anything fancy, really just to serve
+a bunch of files from a folder. There are a lot of ways you can do this, whether
+it’s with a WEBrick, a small python http.server, generate a rails app (or any of
+the &lt;a href=&quot;https://gist.github.com/willurd/5720255&quot;&gt; innumerable other variations &lt;/a&gt;) —
+those aren’t my go-to’s though. Although they definitely get the job done, you
+don’t have much control over anything, and I don’t want to deal with setting up
+a bunch of config for weeks, especially since I’m doing this in my free time. So
+I picked my personal favorite flavor, which is spinning up a tiny express server
+that looks something like this:&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; express &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;express&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; app &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; express&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;static&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;.&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+app&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token number&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;Listening on port 3000...&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;I was ecstatic after writing this because it reminded me exactly why I fell in
+love with JavaScript + Node.js: it has an incredible Time to First Wow ™. What I
+mean by that is, the amount of time it takes to go from having nothing to having
+something someone can actually pick up and play with is seconds. Coming from my
+normal day to day where I’m working in pretty robust JSON APIs, web servers, and
+SPAs, where much of my time is spent getting lost in configuration options,
+reading tomes full of docs, or figuring out why my monitoring alerts aren’t
+firing, this little node applet was a nice crisp breath of fresh air. Technology
+should empower us to achieve real-world outcomes, not just invent new technical
+problems to bikeshed about or make us think about decisions orthogonal to our
+end-goal.&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;When it comes down to it, what I love about a nice short Time to First Wow ™ is
+that it helps users get their hands on whatever I’m building as soon as
+possible. While the above example is of course very small, keeping with this
+idea of small, simple solutions from day one can help you push towards this
+right out of the gate. Assuming your users are cognizant that you’re trying to
+gather early feedback, this can be a great tool to get eyes on your project
+early in its development. From there, you can aggregate that user feedback,
+iterate on ideas and features, and start adding real user value right from the
+beginning. Because at the end of the day, what’s the point of creating
+applications if not to fulfill real end-user needs?&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Inspiration]]></title><description><![CDATA[Inspiration is what gets you up in the morning. It’s that feeling where you
+can’t wait to pound out those ’s and write that chrome extension…]]></description><link>https://keyboard-clacker.github.io/inspiration/</link><guid isPermaLink="false">https://keyboard-clacker.github.io/inspiration/</guid><pubDate>Wed, 14 Aug 2019 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;Inspiration is what gets you up in the morning. It’s that feeling where you
+can’t wait to pound out those &lt;code class=&quot;language-text&quot;&gt;.apply&lt;/code&gt;’s and write that chrome extension you’ve
+been meaning to finish. What gets you through the day?&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto;  max-width: 910px;&quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/5bcda7e7636598a01b329e845d58b95d/dde82/beach.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 28.57142857142857%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAAGABQDASIAAhEBAxEB/8QAFgABAQEAAAAAAAAAAAAAAAAAAAME/8QAFQEBAQAAAAAAAAAAAAAAAAAAAwL/2gAMAwEAAhADEAAAAdciwkED/8QAGBAAAgMAAAAAAAAAAAAAAAAAAQIAEBP/2gAIAQEAAQUCzVYRX//EABgRAAIDAAAAAAAAAAAAAAAAAAABAxES/9oACAEDAQE/AZHRpn//xAAVEQEBAAAAAAAAAAAAAAAAAAACEP/aAAgBAgEBPwEz/8QAFxAAAwEAAAAAAAAAAAAAAAAAAAExIf/aAAgBAQAGPwLCIiP/xAAZEAACAwEAAAAAAAAAAAAAAAAAIRGxwfH/2gAIAQEAAT8hYuxGJPA//9oADAMBAAIAAwAAABD3/wD/xAAXEQEBAQEAAAAAAAAAAAAAAAABACFR/9oACAEDAQE/EGWR3v/EABYRAQEBAAAAAAAAAAAAAAAAAAEREP/aAAgBAgEBPxBsmf/EABoQAAICAwAAAAAAAAAAAAAAAAABMfAhgeH/2gAIAQEAAT8QziOIUITu3ZX0f//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;beach&quot;
+        title=&quot;beach&quot;
+        src=&quot;/static/5bcda7e7636598a01b329e845d58b95d/dde82/beach.jpg&quot;
+        srcset=&quot;/static/5bcda7e7636598a01b329e845d58b95d/158ba/beach.jpg 360w,
+/static/5bcda7e7636598a01b329e845d58b95d/80e3c/beach.jpg 720w,
+/static/5bcda7e7636598a01b329e845d58b95d/dde82/beach.jpg 910w&quot;
+        sizes=&quot;(max-width: 910px) 100vw, 910px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Recently after finishing a major in Computer Science, I’ve been thinking a lot
+about how I should spend my time, and why I do what I do (that being mainly web
+development these days). Although I finished my major fall semester, I still had
+one last class before graduating, so I decided to try to work throughout the
+semester instead of taking it easy. Though my friends may argue that my sitting
+around in sweats crushing some carefully crafted CoffeeScript and getting to
+work with some truly incredible people may be a walk in the park compared to
+their once-every-other-week problem sets, it was different than anything I’ve
+ever experienced. There were no rules, everyone was watching your every
+semicolon (but not really because CoffeeScript), and more importantly we were
+all working together. It might sound strange, but you’ve never felt the pain of
+working on a team until you’ve done a &lt;code class=&quot;language-text&quot;&gt;git merge master&lt;/code&gt;, run &lt;code class=&quot;language-text&quot;&gt;git status&lt;/code&gt;, and
+seen more red than Freddie Krueger on Elm Street. After a while I got into the
+rhythm, writing specs for features and bugs, and throwing together angular
+directives with JST templates, and it started making a little more sense.&lt;/p&gt;
+&lt;p&gt;But why was I doing it? Obviously there’s the axiomatic generalization that it’s
+my job, but, I had to ask myself, why did I pick this job? Was it because I was
+comfortable with front-end development? Or maybe because I’m not fit for a role
+in algorithms development, as it’s been deemed by previous potential employers
+(cough all of silicon valley cough). After I thought about it for a bit, all the
+while still working and chatting with my co-workers over slack or reviewing PR’s
+on GitHub, I came to realize that it’s not the money, it’s not the work, and
+it’s not even my wonderful peers– it’s the chance to make a difference, and to
+sculpt the &lt;a href=&quot;virtual%20landscape%20of%20our%0Afuture&quot;&gt; virtual landscape of our future &lt;/a&gt;. It may seem overtly self-centered and egocentric, but I dare say you
+have to be.&lt;/p&gt;
+&lt;p&gt;After all, what else wakes you up more than the satisfaction of the noumenon
+and anticipation of what lies in store for tomorrow&lt;/p&gt;</content:encoded></item></channel></rss>
