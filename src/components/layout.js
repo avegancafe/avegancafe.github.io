@@ -8,13 +8,12 @@ const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
   const { isMobile } = useMedia()
-  console.log(isMobile)
 
   if (location.pathname === rootPath) {
     header = (
       <h1
         style={{
-          ...scale(isMobile ? 0.5 : 1.5),
+          ...scale(isMobile ? 1 : 1.5),
           marginBottom: rhythm(1.5),
           marginTop: 0,
         }}
