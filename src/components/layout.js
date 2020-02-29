@@ -1,17 +1,20 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from 'react'
+import { Link } from 'gatsby'
+import useMedia from '../utils/useMedia'
 
-import { rhythm, scale } from "../utils/typography"
+import { rhythm, scale } from '../utils/typography'
 
 const Layout = ({ location, title, children }) => {
   const rootPath = `${__PATH_PREFIX__}/`
   let header
+  const { isMobile } = useMedia()
+  console.log(isMobile)
 
   if (location.pathname === rootPath) {
     header = (
       <h1
         style={{
-          ...scale(1.5),
+          ...scale(isMobile ? 0.5 : 1.5),
           marginBottom: rhythm(1.5),
           marginTop: 0,
         }}
@@ -57,7 +60,7 @@ const Layout = ({ location, title, children }) => {
         maxWidth: rhythm(36),
         padding: `${rhythm(1.5)} ${rhythm(3)}`,
         backgroundColor: 'white',
-        minHeight: 'calc(100vh - 64px)'
+        minHeight: 'calc(100vh - 64px)',
       }}
     >
       <header>{header}</header>

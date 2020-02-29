@@ -21,7 +21,7 @@ a bunch of config for weeks, especially since I’m doing this in my free time. 
 I picked my personal favorite flavor, which is spinning up a tiny express server
 that looks something like this:
 
-```javascript
+```js
 const express = require('express')
 const app = express()
 
