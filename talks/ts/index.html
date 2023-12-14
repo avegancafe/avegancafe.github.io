@@ -1,0 +1,767 @@
+<!doctype html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+        <style> @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap'); </style>
+        <style>
+            /* REMOVE ME: (all lines with "REMOVE ME" will be removed by the templating code)
+ * REMOVE ME: This template CSS uses a basic jinja templating syntax:
+ * REMOVE ME:
+ * REMOVE ME: \{\{VARIABLE\}\}
+   REMOVE ME: */
+
+/* 
+ * ---------------------------------------------------------------------------
+ * From https://www.joshwcomeau.com/css/custom-css-reset/
+ * Wayback Machine: https://web.archive.org/web/20221211044346/https://www.joshwcomeau.com/css/custom-css-reset/
+ * ---------------------------------------------------------------------------
+ */
+
+/*
+  1. Use a more-intuitive box-sizing model.
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+/*
+  2. Remove default margin
+*/
+* {
+  margin: 0;
+}
+/*
+  3. Allow percentage-based heights in the application
+*/
+html, body {
+  height: 100%;
+}
+/*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+/*
+  6. Improve media defaults
+*/
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+/*
+  7. Remove built-in form typography styles
+*/
+input, button, textarea, select {
+  font: inherit;
+}
+/*
+  8. Avoid text overflows
+*/
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
+/*
+  9. Create a root stacking context
+*/
+#root, #__next {
+  isolation: isolate;
+}
+
+/* 
+ * ---------------------------------------------------------------------------
+ * ---------------------------------------------------------------------------
+ */
+
+@font-face {
+    font-family: "DejaVuSansMono-lookatme";
+    src: url("./static/fonts/DejaVu/DejaVuSansMono-lookatme.ttf") format("truetype");
+    font-style: normal;
+    unicode-range: U+00-FFFF;
+}
+@font-face {
+    font-family: "DejaVuSansMono-lookatme";
+    src: url("./static/fonts/DejaVu/DejaVuSansMono-lookatme.ttf") format("truetype");
+    font-style: italic;
+    unicode-range: U+00-FFFF;
+}
+@font-face {
+    font-family: "DejaVuSansMono-lookatme";
+    src: url("./static/fonts/DejaVu/DejaVuSansMonoBold-lookatme.ttf") format("truetype");
+    font-weight: bold;
+    unicode-range: U+00-FFFF;
+}
+@font-face {
+    font-family: "DejaVuSansMono-lookatme";
+    src: url("./static/fonts/DejaVu/DejaVuSansMonoBold-lookatme.ttf") format("truetype");
+    font-weight: bold;
+    font-style: italic;
+    unicode-range: U+00-FFFF;
+}
+@font-face {
+    font-family: "DejaVuSansMono-lookatme";
+    src: url("./static/fonts/DejaVu/DejaVuSansMonoOblique-lookatme.ttf") format("truetype");
+    font-style: oblique;
+    unicode-range: U+00-FFFF;
+}
+@font-face {
+    font-family: "DejaVuSansMono-lookatme";
+    src: url("./static/fonts/DejaVu/DejaVuSansMonoBoldOblique-lookatme.ttf") format("truetype");
+    font-style: oblique;
+    font-weight: bold;
+    unicode-range: U+00-FFFF;
+}
+
+* {
+    font-family: "DejaVuSansMono-lookatme", monospace;
+}
+
+body {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-basis: 0;
+    font-size: 1.0em;
+    line-height: 1.13;
+    background-color: #000000;
+    color: #ffffff;
+}
+
+.nav {
+    font-size: 0.8em;
+    flex-shrink: 1;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden;
+    border-right: 1px solid #303030;
+    padding: 15px;
+}
+
+.nav ul {
+    padding-left: 15px;
+}
+
+.nav-inner {
+    height: 100%;
+    width: 100%;
+    padding-right: 35px;
+    box-sizing: content-box;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    overflow-wrap: break-word;
+    position: relative;
+}
+
+.navitem {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.nav-active, .nav-active > * {
+    background-color: #333333 !important;
+}
+
+.navitem-slide {
+    cursor: pointer;
+    position: relative;
+}
+
+.slide-deck {
+    flex: 1;
+    box-sizing: border-box;
+    height: calc(100vh - 10px - 10px);
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.slide {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.slide-header {
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.slide-body {
+    flex-grow: 1;
+    flex-shrink: 1;
+    overflow: hidden;
+    position: relative;
+}
+
+.slide-body-inner {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    padding-right: 20px;
+    position: relative;
+}
+
+.slide-body-inner-inner {
+    width: fit-content;
+}
+
+.slide-body-inner:focus, .slide-body-inner:focus-visible {
+    outline: none;
+    border: none;
+}
+
+.slide-footer {
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.blink {
+  animation: blinker 1.5s step-start infinite;
+}
+
+.scrollbar-gutter {
+    position: absolute;
+    top: 0;
+    color: #2c2c2c;
+    background-color: ;
+    user-select: none;
+}
+
+.scrollbar-slider {
+    position: absolute;
+    top: 0;
+    z-index: 200;
+    color: #4c4c4c;
+    user-select: none;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+        </style>
+        <script type="text/javascript">
+            /* REMOVE ME: (all lines with "REMOVE ME" will be removed by the templating code)
+ * REMOVE ME: This template CSS uses a basic jinja templating syntax:
+ * REMOVE ME:
+ * REMOVE ME: \{\{VARIABLE\}\}
+   REMOVE ME: */
+
+var SLIDES = {};
+var NAV_BY_SLIDE = {};
+var CURR_SLIDE = 0;
+
+function onload() {
+  let navSlideItems = document.getElementsByClassName("navitem-slide");
+  Array.prototype.forEach.call(navSlideItems, function(elem) {
+    elem.addEventListener("click", onNavClick, false);
+    let slideIdx = parseInt(elem.dataset.slideIdx);
+    NAV_BY_SLIDE[slideIdx] = elem;
+  });
+
+  let slideItems = document.getElementsByClassName("slide");
+  Array.prototype.forEach.call(slideItems, function(elem) {
+    let slideIdx = parseInt(elem.dataset.slideIdx);
+    SLIDES[slideIdx] = elem;
+    elem.classList.add("hidden");
+    injectScrollbar(elem);
+  });
+
+  window.addEventListener("resize", () => {
+    for (let slideIdx of Object.keys(SLIDES)) {
+      let slide = SLIDES[slideIdx];
+      slide.scrollbar.update();
+    }
+  });
+
+  document.addEventListener("keydown", onKeypress);
+  setSlideIdx(CURR_SLIDE);
+}
+
+function enterFullScreen(element) {
+  if(element.requestFullscreen) {
+    element.requestFullscreen();
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen();
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen();
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullscreen();
+  }
+}
+
+function exitFullscreen() {
+  if(document.exitFullscreen) {
+    document.exitFullscreen();
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen();
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen();
+  }
+}
+
+function onNavClick(e) {
+  let item = e.currentTarget;
+  let slideIdx = parseInt(item.dataset.slideIdx);
+  setSlideIdx(slideIdx);
+}
+
+function setSlideIdx(idx) {
+  getSlide().classList.add("hidden");
+  let navElem = getNav();
+  if (navElem) {
+    navElem.classList.remove("nav-active");
+  }
+
+  CURR_SLIDE = idx;
+
+  let slideElem = getSlide();
+  slideElem.classList.remove("hidden");
+  slideElem.querySelector(".slide-body-inner").click();
+  slideElem.querySelector(".slide-body-inner").focus();
+  slideElem.scrollbar.update();
+
+  navElem = getNav();
+  if (navElem) {
+    navElem.classList.add("nav-active");
+  }
+}
+
+function setSlideIdxRel(amount) {
+  let newIdx = CURR_SLIDE + amount;
+  if (SLIDES[newIdx] === undefined) {
+    return;
+  }
+
+  setSlideIdx(newIdx);
+}
+
+function getSlide() {
+  return SLIDES[CURR_SLIDE];
+}
+
+function getNav() {
+  var idx = CURR_SLIDE;
+  while (idx >= 0 && !NAV_BY_SLIDE[idx]) {
+    idx--;
+  }
+  return NAV_BY_SLIDE[idx];
+}
+
+const KEYS = {
+  ARROW_UP: 38,
+  ARROW_DOWN: 40,
+  ARROW_LEFT: 41,
+  ARROW_RIGHT: 39,
+};
+
+function onKeypress(_e) {
+  let e = _e || window.event;
+  let key = (e.key || String.fromCharCode(e.keyCode)).toLowerCase();
+
+  if (e.shiftKey || e.controlKey || e.altKey) {
+    return false;
+  }
+
+  switch (key) {
+    case "arrowup":
+      break;
+    case "arrowdown":
+      break;
+    case "arrowleft":
+    case "h":
+    case "k":
+      setSlideIdxRel(-1);
+      break;
+    case "arrowright":
+    case "l":
+    case "j":
+      setSlideIdxRel(1);
+      break;
+  }
+}
+
+function getLineHeight(elem) {
+  let singleLineSpan = document.createElement("div");
+  singleLineSpan.innerHTML = "A";
+
+  elem.appendChild(singleLineSpan);
+  let computed = getComputedStyle(singleLineSpan);
+  let height = parseFloat(computed.height);
+  elem.removeChild(singleLineSpan);
+  if (isNaN(height)) {
+    return 0;
+  }
+  return height;
+}
+
+function needsScrollbar(elem) {
+  return !(
+    elem.scrollTop == 0
+    && Math.abs(elem.scrollHeight - elem.clientHeight) < 1
+  );
+}
+
+class Scrollbar {
+  constructor(viewElem, watchElem) {
+    this.viewElem = viewElem;
+    this.watchElem = watchElem;
+
+    this.gutter = document.createElement("div");
+    this.gutter.classList.add("scrollbar-gutter");
+    this.viewElem.addEventListener("scroll", () => this.update());
+
+    this.slider = document.createElement("div");
+    this.slider.classList.add("scrollbar-slider");
+
+    // this shouldn't change...
+    this.lineHeight = getLineHeight(this.watchElem);
+
+    this.sliderTopChars = ["\u2840", "\u28c0", "\u28e0", "\u28e4", "\u28e6", "\u28f6", "\u28fe", "\u28ff"];
+    this.sliderFill = "\u28ff";
+    this.sliderBottomChars = ["\u2808", "\u2809", "\u280b", "\u281b", "\u283b", "\u283f", "\u287f", "\u28ff"];
+
+    this.gutterFill = "\u2595";
+
+    this.update();
+  }
+
+  appendTo(elem) {
+    elem.appendChild(this.gutter);
+  }
+
+  update() {
+    if (this.lineHeight == 0) {
+      this.lineHeight = getLineHeight(this.watchElem);
+    }
+    if (this.lineHeight == 0) {
+      return;
+    }
+
+    if (!needsScrollbar(this.viewElem)) {
+      this.gutter.style.display = "none";
+      return;
+    }
+
+    this.gutter.style.display = "block";
+
+    let styles = getComputedStyle(this.watchElem);
+    this.gutter.style.left = parseFloat(styles.width) + 2.0 + "px";
+
+    let beforePx = this.viewElem.scrollTop;
+    let visiblePx = this.viewElem.clientHeight;
+    let afterPx = this.watchElem.scrollHeight - beforePx - visiblePx;
+    let totalPx = this.watchElem.scrollHeight;
+
+    let before = beforePx / this.lineHeight;
+    let visible = visiblePx / this.lineHeight;
+    let after = afterPx / this.lineHeight;
+    let total = totalPx / this.lineHeight;
+
+    let scrollPercent = before / (before + after);
+
+    let sliderHeight = Math.max(visible * (visible / total), 2.0);
+    let fillCount = sliderHeight;
+
+    let sliderEndIdxF = sliderHeight + (visible - sliderHeight) * scrollPercent;
+    let sliderEndVal = sliderEndIdxF - Math.floor(sliderEndIdxF);
+    let sliderEndChar = "";
+    if (sliderEndVal > 0.0) {
+      fillCount -= sliderEndVal;
+      sliderEndChar = this.sliderBottomChars[
+        Math.floor(sliderEndVal / (1.0 / this.sliderBottomChars.length))
+      ];
+    }
+
+    let sliderStartIdxF = sliderEndIdxF - sliderHeight;
+    let sliderStartVal = 1.0 - (sliderStartIdxF - Math.floor(sliderStartIdxF));
+    let sliderStartChar = "";
+    if (sliderStartVal < 1.0) {
+      fillCount -= sliderStartVal;
+      sliderStartChar = this.sliderTopChars[
+        Math.floor(sliderStartVal / (1.0 / this.sliderTopChars.length))
+      ];
+    }
+
+    let sliderStartIdx = Math.floor(sliderStartIdxF);
+    let sliderEndIdx = Math.ceil(sliderEndIdxF);
+
+    let sliderChars = "";
+    sliderChars += sliderStartChar;
+    sliderChars += this.sliderFill.repeat(Math.round(fillCount));
+    sliderChars += sliderEndChar;
+
+    let gutterContent = this.gutterFill.repeat(visible + 1).split("").join("<br/>");
+    this.gutter.innerHTML = gutterContent;
+
+    this.gutter.appendChild(this.slider);
+    this.slider.innerHTML = sliderChars.split("").join("<br/>");
+    this.slider.style.top = "" + (sliderStartIdx * this.lineHeight) + "px";
+  }
+}
+
+function injectScrollbar(slideElem) {
+  let innerElem = slideElem.querySelector(".slide-body-inner");
+  let innerInnerElem = slideElem.querySelector(".slide-body-inner-inner");
+  let scrollbar = new Scrollbar(innerElem, innerInnerElem);
+  scrollbar.appendTo(slideElem.querySelector(".slide-body"));
+  slideElem.scrollbar = scrollbar;
+}
+
+        </script>
+    </head>
+    <body onload="onload()">
+        <div class="nav">
+            <div class="nav-inner">
+                <ul><li data-slide-idx="0" class="navitem navitem-slide"><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ Typescript Tips &amp; Tricks</span></li><li data-slide-idx="1" class="navitem navitem-slide"><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ Leverage or Avoid?</span></li><li data-slide-idx="2" class="navitem navitem-slide"><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Leverage</span></li><li data-slide-idx="3" class="navitem navitem-slide"><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Avoid</span></li><li data-slide-idx="12" class="navitem navitem-slide"><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ The End</span></li></ul>
+            </div>
+        </div>
+        <div class="slide-deck">
+            <div data-slide-idx="0" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ Typescript Tips &amp; Tricks</span><span style='padding-left: 33ch'></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 1 / 13</span></div></div><div data-slide-idx="1" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ Leverage or Avoid?</span><span style='padding-left: 39ch'></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 2 / 13</span></div></div><div data-slide-idx="2" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Leverage</span><span style='padding-left: 46ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Custom Hooks</span><span style='padding-left: 44ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Extracting your networking or state management into its</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">own module can help make your code more maintainable by:</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">‣</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Isolates complexity</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 37ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">‣</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Clarify intention of usage by separating dependencies</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">‣</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Helps separate different layers of responsibility</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 7ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Basically a constructor function to return an instance of</span><span style="color: #ffffff; background-color: #000000"> </span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">a service, not just a collection of methods and variables</span><span style="color: #ffffff; background-color: #000000"> </span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 3 / 13</span></div></div><div data-slide-idx="3" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Avoid</span><span style='padding-left: 49ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Casting with </span><span style="color: #f8f8f2; font-weight: bold; background-color: #272822">as</span><span style='padding-left: 41ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Avoid casting with </span><span style="color: #f8f8f2; background-color: #272822">as</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 37ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Typescript is a structural type system so it is rarely</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 4ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">necessary and usually an indication that your types are</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">inconsistent. It's really a manual way of circumventing</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">the type compiler.</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 40ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Only to be used with functions like </span><span style="color: #f8f8f2; background-color: #272822">JSON.parse</span><span style="color: #ffffff; background-color: #000000"> or </span><span style="color: #f8f8f2; background-color: #272822">fetch</span><span style="color: #ffffff; background-color: #000000">.</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 4 / 13</span></div></div><div data-slide-idx="4" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Leverage</span><span style='padding-left: 46ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Type Inference</span><span style='padding-left: 42ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Try to avoid defining the types of things.</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 16ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Manually specifying types can feel a lot more necessary</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">when </span><span style="color: #f8f8f2; background-color: #272822">any</span><span style="color: #ffffff; background-color: #000000"> is used a lot, but the less you can use it, the</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">more accurate your types are going to be, since you're</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 4ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">going to be letting the compiler find the real types of</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">things.</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 51ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 5 / 13</span></div></div><div data-slide-idx="5" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Leverage</span><span style='padding-left: 46ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Type Inference</span><span style='padding-left: 42ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000">e.g.:</span><span style='padding-left: 55ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">type</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">AToB</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #a6e22e; background-color: #272822">B</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">any</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;{&nbsp;[</span><span style="color: #a6e22e; background-color: #272822">key</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f8f8f2; background-color: #272822">]</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">B</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 19ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">someMap</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">AToB</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;{&nbsp;</span><span style="color: #a6e22e; background-color: #272822">field</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #e6db74; background-color: #272822">"hi"</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 23ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">someMap</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;{&nbsp;</span><span style="color: #a6e22e; background-color: #272822">field</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">true</span><span style="color: #f8f8f2; background-color: #272822">,&nbsp;</span><span style="color: #a6e22e; background-color: #272822">otherField</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">false</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 16ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">someMap</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;{&nbsp;</span><span style="color: #a6e22e; background-color: #272822">field</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 35ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">/*</span><span style="background-color: #272822"><span style='padding-left: 58ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">&nbsp;*&nbsp;The&nbsp;type&nbsp;of&nbsp;`field`&nbsp;here&nbsp;is&nbsp;not&nbsp;inferred&nbsp;as&nbsp;`string`,</span><span style="background-color: #272822"><span style='padding-left: 4ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">since&nbsp;you</span><span style="background-color: #272822"><span style='padding-left: 51ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">&nbsp;*&nbsp;defined&nbsp;the&nbsp;type&nbsp;of&nbsp;`someMap`&nbsp;without&nbsp;the&nbsp;type&nbsp;argument.</span><span style="background-color: #272822"> </span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">Now,&nbsp;`field`&nbsp;has&nbsp;a</span><span style="background-color: #272822"><span style='padding-left: 42ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">&nbsp;*&nbsp;type&nbsp;of&nbsp;`any`,&nbsp;and&nbsp;the&nbsp;`length`&nbsp;property&nbsp;is&nbsp;also&nbsp;`any`.</span><span style="background-color: #272822"><span style='padding-left: 2ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">*/</span><span style="background-color: #272822"><span style='padding-left: 58ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">someMap</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">field</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">length</span><span style="background-color: #272822"><span style='padding-left: 40ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;instead,&nbsp;use&nbsp;`unknown`</span><span style="background-color: #272822"><span style='padding-left: 35ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">type</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">AToB</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #a6e22e; background-color: #272822">B</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">unknown</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;{&nbsp;[</span><span style="color: #a6e22e; background-color: #272822">key</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f8f8f2; background-color: #272822">]</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">B</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 15ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">someMap</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">AToB</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;{&nbsp;</span><span style="color: #a6e22e; background-color: #272822">field</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #e6db74; background-color: #272822">"hi"</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 15ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;Now&nbsp;the&nbsp;type&nbsp;of&nbsp;`field`&nbsp;is&nbsp;appropriately&nbsp;`string`,&nbsp;and</span><span style="background-color: #272822"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">`length`&nbsp;is&nbsp;`number`</span><span style="background-color: #272822"><span style='padding-left: 40ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">someMap</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">field</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">length</span><span style="background-color: #272822"><span style='padding-left: 40ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 6 / 13</span></div></div><div data-slide-idx="6" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Leverage</span><span style='padding-left: 46ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Type Inference</span><span style='padding-left: 42ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000">e.g.:</span><span style='padding-left: 55ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">a</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">User</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">getUser</span><span style="color: #f8f8f2; background-color: #272822">();</span><span style="background-color: #272822"><span style='padding-left: 34ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;function&nbsp;getUser():&nbsp;User;</span><span style="background-color: #272822"><span style='padding-left: 32ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;`getUser`&nbsp;already&nbsp;returns&nbsp;a&nbsp;`User`&nbsp;type,&nbsp;no&nbsp;need&nbsp;to</span><span style="background-color: #272822"><span style='padding-left: 6ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">double-specify</span><span style="background-color: #272822"><span style='padding-left: 46ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 7 / 13</span></div></div><div data-slide-idx="7" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Leverage</span><span style='padding-left: 46ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Type Inference</span><span style='padding-left: 42ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000">e.g.:</span><span style='padding-left: 55ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">Component</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;()&nbsp;=&gt;&nbsp;{</span><span style="background-color: #272822"><span style='padding-left: 35ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;</span><span style="color: #75715e; background-color: #272822">//&nbsp;can&nbsp;be&nbsp;tedious&nbsp;and&nbsp;prone&nbsp;to&nbsp;error&nbsp;defining&nbsp;these</span><span style="background-color: #272822"><span style='padding-left: 7ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">callback&nbsp;parameter&nbsp;types</span><span style="background-color: #272822"><span style='padding-left: 36ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;</span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">handleClick</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;(</span><span style="color: #a6e22e; background-color: #272822">e</span><span style="color: #f92672; background-color: #272822">:</span><span style="background-color: #272822"><span style='padding-left: 35ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">React.HtmlClickEvent</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #a6e22e; background-color: #272822">React</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">MouseClick</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #f8f8f2; background-color: #272822">)&nbsp;=&gt;{</span><span style="background-color: #272822"><span style='padding-left: 17ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #a6e22e; background-color: #272822">console</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #a6e22e; background-color: #272822">e</span><span style="color: #f8f8f2; background-color: #272822">);</span><span style="background-color: #272822"><span style='padding-left: 41ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;}</span><span style="background-color: #272822"><span style='padding-left: 57ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;</span><span style="color: #66d9ef; background-color: #272822">return</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #a6e22e; background-color: #272822">Button</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">onClick</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">{</span><span style="color: #a6e22e; background-color: #272822">handleClick</span><span style="color: #f8f8f2; background-color: #272822">}</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #a6e22e; background-color: #272822">Submit</span><span style="color: #f92672; background-color: #272822">!&lt;</span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">}</span><span style="background-color: #272822"><span style='padding-left: 59ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;instead</span><span style="background-color: #272822"><span style='padding-left: 50ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">Component</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;()&nbsp;=&gt;&nbsp;{</span><span style="background-color: #272822"><span style='padding-left: 35ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;</span><span style="color: #75715e; background-color: #272822">//&nbsp;`e`&nbsp;will&nbsp;now&nbsp;infer&nbsp;the&nbsp;type&nbsp;from&nbsp;`onClick`</span><span style="background-color: #272822"><span style='padding-left: 13ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;</span><span style="color: #66d9ef; background-color: #272822">return</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #a6e22e; background-color: #272822">Button</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">onClick</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">{(</span><span style="color: #a6e22e; background-color: #272822">e</span><span style="color: #f8f8f2; background-color: #272822">)&nbsp;=&gt;{</span><span style="background-color: #272822"><span style='padding-left: 27ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #a6e22e; background-color: #272822">console</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #a6e22e; background-color: #272822">e</span><span style="color: #f8f8f2; background-color: #272822">);</span><span style="background-color: #272822"><span style='padding-left: 41ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">&nbsp;&nbsp;}}</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #a6e22e; background-color: #272822">Submit</span><span style="color: #f92672; background-color: #272822">!&lt;</span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #f8f8f2; background-color: #272822">}</span><span style="background-color: #272822"><span style='padding-left: 59ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 8 / 13</span></div></div><div data-slide-idx="8" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Avoid</span><span style='padding-left: 49ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ </span><span style="color: #f8f8f2; font-weight: bold; background-color: #272822">@ts-expect-error</span><span style='padding-left: 40ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">This basically disables the typescript compiler and</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 7ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">potentially lets an indefinite number of type errors</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 6ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">through in whatever region you disable tsc in</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 13ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">A bunch of these in our codebase from trying to enable</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 4ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">more and more compiler restrictions, but we're actively</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">trying to remove them so if you encounter one please try</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">to remove the comment directive and fix the underlying</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 4ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">type error that is exposed</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 32ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">‣</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Tip: if the type system says something needs to be</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 6ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #f8f8f2; background-color: #272822">undefined</span><span style="color: #ffffff; background-color: #000000"> or </span><span style="color: #f8f8f2; background-color: #272822">null</span><span style="color: #ffffff; background-color: #000000"> or of a different type than initially</span><span style="color: #ffffff; background-color: #000000"> </span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">built for, change the definition of the function</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 8ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">signature or object type, instead of modifying the code</span><span style="color: #ffffff; background-color: #000000"> </span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 2ch'></span></span><span style="color: #ffffff; background-color: #000000">to remove the optional check.</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 27ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 38ch'></span><span style="color: #ff5f00; background-color: #000000">slide 9 / 13</span></div></div><div data-slide-idx="9" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Avoid</span><span style='padding-left: 49ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ </span><span style="color: #f8f8f2; font-weight: bold; background-color: #272822">@ts-expect-error</span><span style='padding-left: 40ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;`someState`&nbsp;has&nbsp;a&nbsp;type&nbsp;of&nbsp;null&nbsp;and&nbsp;`setSomeState`&nbsp;only</span><span style="background-color: #272822"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">can&nbsp;be&nbsp;passed&nbsp;`null`</span><span style="background-color: #272822"><span style='padding-left: 40ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;[</span><span style="color: #a6e22e; background-color: #272822">someState</span><span style="color: #f8f8f2; background-color: #272822">,&nbsp;</span><span style="color: #a6e22e; background-color: #272822">setSomeState</span><span style="color: #f8f8f2; background-color: #272822">]&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">useState</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 12ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;`count`&nbsp;cannot&nbsp;be&nbsp;instantiated&nbsp;with&nbsp;`null`&nbsp;if&nbsp;it&nbsp;has&nbsp;a</span><span style="background-color: #272822"><span style='padding-left: 3ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">type&nbsp;of&nbsp;`number`</span><span style="background-color: #272822"><span style='padding-left: 44ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;[</span><span style="color: #a6e22e; background-color: #272822">count</span><span style="color: #f8f8f2; background-color: #272822">,&nbsp;</span><span style="color: #a6e22e; background-color: #272822">setCount</span><span style="color: #f8f8f2; background-color: #272822">]&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">useState</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #66d9ef; background-color: #272822">number</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 12ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;instead...</span><span style="background-color: #272822"><span style='padding-left: 47ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;pass&nbsp;the&nbsp;type&nbsp;argument&nbsp;to&nbsp;`useState`</span><span style="background-color: #272822"><span style='padding-left: 21ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;[</span><span style="color: #a6e22e; background-color: #272822">count</span><span style="color: #f8f8f2; background-color: #272822">,&nbsp;</span><span style="color: #a6e22e; background-color: #272822">setCount</span><span style="color: #f8f8f2; background-color: #272822">]&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">useState</span><span style="color: #f92672; background-color: #272822">&lt;</span><span style="color: #66d9ef; background-color: #272822">number</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">|</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f92672; background-color: #272822">&gt;</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 5ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 37ch'></span><span style="color: #ff5f00; background-color: #000000">slide 10 / 13</span></div></div><div data-slide-idx="10" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Avoid</span><span style='padding-left: 49ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ </span><span style="color: #f8f8f2; font-weight: bold; background-color: #272822">@ts-expect-error</span><span style='padding-left: 40ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;cannot&nbsp;access&nbsp;field&nbsp;on&nbsp;undefined</span><span style="background-color: #272822"><span style='padding-left: 25ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">optionalThing</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">Thing</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">|</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">undefined</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">undefined</span><span style="color: #f8f8f2; background-color: #272822">;</span><span style="background-color: #272822"><span style='padding-left: 9ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">optionalThing</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">name</span><span style="background-color: #272822"><span style='padding-left: 42ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;instead...</span><span style="background-color: #272822"><span style='padding-left: 47ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;use&nbsp;optional&nbsp;chaining&nbsp;with&nbsp;?.&nbsp;to&nbsp;access&nbsp;`name`</span><span style="background-color: #272822"><span style='padding-left: 11ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">optionalThing</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">Thing</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">|</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">undefined</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">undefined</span><span style="color: #f8f8f2; background-color: #272822">;</span><span style="background-color: #272822"><span style='padding-left: 9ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">optionalThing</span><span style="color: #f92672; background-color: #272822">?</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">name</span><span style="background-color: #272822"><span style='padding-left: 41ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 37ch'></span><span style="color: #ff5f00; background-color: #000000">slide 11 / 13</span></div></div><div data-slide-idx="11" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ To Avoid</span><span style='padding-left: 49ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ </span><span style="color: #f8f8f2; font-weight: bold; background-color: #272822">@ts-expect-error</span><span style='padding-left: 40ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;cannot&nbsp;pass&nbsp;`val`&nbsp;that&nbsp;could&nbsp;be&nbsp;`null`&nbsp;to&nbsp;`log`</span><span style="background-color: #272822"><span style='padding-left: 10ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;(</span><span style="color: #a6e22e; background-color: #272822">input</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f8f8f2; background-color: #272822">)&nbsp;=&gt;&nbsp;</span><span style="color: #a6e22e; background-color: #272822">console</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #a6e22e; background-color: #272822">input</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 11ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">val</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">|</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="background-color: #272822"><span style='padding-left: 29ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #a6e22e; background-color: #272822">val</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 52ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;instead...</span><span style="background-color: #272822"><span style='padding-left: 47ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="background-color: #272822"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #75715e; background-color: #272822">//&nbsp;change&nbsp;the&nbsp;`input`&nbsp;parameter&nbsp;to&nbsp;type&nbsp;`string&nbsp;|&nbsp;null`</span><span style="background-color: #272822"><span style='padding-left: 5ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;(</span><span style="color: #a6e22e; background-color: #272822">input</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">|</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">)&nbsp;=&gt;&nbsp;</span><span style="color: #a6e22e; background-color: #272822">console</span><span style="color: #f8f8f2; background-color: #272822">.</span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #a6e22e; background-color: #272822">input</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 4ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #66d9ef; background-color: #272822">const</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #a6e22e; background-color: #272822">val</span><span style="color: #f92672; background-color: #272822">:</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">string</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">|</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #f92672; background-color: #272822">=</span><span style="color: #f8f8f2; background-color: #272822">&nbsp;</span><span style="color: #66d9ef; background-color: #272822">null</span><span style="background-color: #272822"><span style='padding-left: 29ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #a6e22e; background-color: #272822">log</span><span style="color: #f8f8f2; background-color: #272822">(</span><span style="color: #a6e22e; background-color: #272822">val</span><span style="color: #f8f8f2; background-color: #272822">)</span><span style="background-color: #272822"><span style='padding-left: 52ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 37ch'></span><span style="color: #ff5f00; background-color: #000000">slide 12 / 13</span></div></div><div data-slide-idx="12" class="slide"><div class="slide-header"><span style='padding-left: 38ch'></span><span style="color: #ff5f00; font-weight: bold; font-style: italic; background-color: #000000">Typescript Tips &amp; Tricks</span><span style='padding-left: 38ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span><br/>
+<span style='padding-left: 100ch'></span></div><div class="slide-body"><div tabindex="-1" class="slide-body-inner"><div class="slide-body-inner-inner"><span style='padding-left: 20ch'></span><span style="color: #87ffd7; font-weight: bold; background-color: #000000">██ The End</span><span style='padding-left: 50ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #00d7d7; font-weight: bold; background-color: #000000">▓▓▓ Summary</span><span style='padding-left: 49ch'></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 60ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Use custom hooks</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 42ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Avoid casting with </span><span style="color: #f8f8f2; background-color: #272822">as</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 37ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Leverage type inference</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 35ch'></span></span><span style='padding-left: 20ch'></span><br/>
+<span style='padding-left: 20ch'></span><span style="color: #ffffff; font-weight: bold; background-color: #000000">•</span><span style="color: #ffffff; background-color: #000000"> </span><span style="color: #ffffff; background-color: #000000">Remove </span><span style="color: #f8f8f2; background-color: #272822">@ts-expect-error</span><span style="color: #ffffff; background-color: #000000">s</span><span style="color: #ffffff; background-color: #000000"><span style='padding-left: 34ch'></span></span><span style='padding-left: 20ch'></span></div></div></div><div class="slide-footer"><span style="color: #878787; background-color: #000000">2023-06-28</span><span style='padding-left: 40ch'></span><span style='padding-left: 37ch'></span><span style="color: #ff5f00; background-color: #000000">slide 13 / 13</span></div></div>
+        </div>
+    </body>
+</html>
